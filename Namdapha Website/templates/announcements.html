@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(43, 51, 71);
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #2b3347;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #FFD700;
+        }
+
+        .announcement {
+            background-color: #3b445f;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+            transition: max-height 0.3s ease-in-out;
+            overflow: hidden;
+            max-height: 50px; /* Initially hides the content */
+        }
+
+        .announcement:hover {
+            max-height: 500px; /* Expands to show details on hover */
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        .announcement h2 {
+            margin: 0;
+            font-size: 20px;
+            cursor: pointer;
+            color: #FFD700;
+        }
+
+        .announcement p {
+            margin: 10px 0 0;
+            font-size: 16px;
+            color: #ccc;
+            display: none; /* Hidden by default */
+        }
+
+        .announcement:hover p {
+            display: block; /* Show details on hover */
+        }
+
+        .announcement .date {
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Announcements</h1>
+        
+        <!-- Example announcement -->
+        <div class="announcement">
+            <h2>Welcome to our House</h2>
+            <p class="date">Date: September 29, 2024</p>
+            <p>Welcome to House Namdapha at IIT Madras, where innovation meets environmental stewardship. Just as Namdapha National Park is a treasure of biodiversity, our house embodies a vibrant community of thinkers and doers committed to sustainability and academic excellence. Here, we foster collaboration and creativity, encouraging each member to take initiative in making a positive impact. Together, we explore new ideas, embrace challenges, and inspire each other to be the change-makers of tomorrow. Let’s embark on this journey with a shared vision of progress and responsibility!</p>
+        </div>
+
+        <!--<div class="announcement">
+            <h2>Title of Announcement 2</h2>
+            <p class="date">Date: October 1, 2024</p>
+            <p>More details about this specific announcement will be displayed upon hover. Keep it concise and informative.</p>
+        </div> -->
+
+        <!-- 
+        <div class="announcement">
+            <h2>Title of Announcement 3</h2>
+            <p class="date">Date: October 5, 2024</p>
+            <p>Content for the third announcement. These details will show up when hovered over.</p>
+        </div>
+    </div> -->
+
+</body>
+</html>

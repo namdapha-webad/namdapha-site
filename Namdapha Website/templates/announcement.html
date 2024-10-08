@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(43, 51, 71);
+            color: white;
+        }
+        .menu {
+            list-style: none;
+            margin: 0;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 200px;
+            transition: transform 0.3s ease;
+            transform: translateX(-100%); /* Hidden by default */
+        }
+
+        .menu.show {
+            transform: translateX(0); /* Slide in when active */
+        }
+
+        .menu li {
+            margin: 10px 0;
+        }
+        
+        .menu a {
+            color: #fff;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .menu a:hover {
+            color: #333;
+            background-color: #ffcc00;
+            border: 2px solid #ffcc00;
+        }
+
+        /* Hamburger Button - Always visible */
+        .hamburger {
+            font-size: 30px;
+            color: #fff;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 1000; /* Ensure it stays on top */
+            display: block; /* Always visible initially */
+        }
+
+        .hamburger.hidden {
+            display: none; /* Hide when menu is open */
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #2b3347;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            text-align: center;
+            color: #FFD700;
+            font-size: 36px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .announcement {
+            background-color: #3b445f;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: max-height 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            overflow: hidden;
+            max-height: 60px; /* Initially hides the content */
+        }
+
+        .announcement:hover {
+            max-height: 500px; /* Expands to show details on hover */
+            background-color: #48526e;
+        }
+
+        .announcement h2 {
+            margin: 0;
+            font-size: 22px;
+            cursor: pointer;
+            color: #FFD700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .announcement p {
+            margin: 10px 0 0;
+            font-size: 16px;
+            color: #ddd;
+            display: none; /* Hidden by default */
+        }
+
+        .announcement:hover p {
+            display: block; /* Show details on hover */
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .announcement .date {
+            font-size: 14px;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="hamburger">
+        <i class="fas fa-bars"></i> <!-- This is the three-line menu icon from Font Awesome -->
+    </div>
+
+    <!-- Left-aligned menu -->
+    <ul class="menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/council">House Council</a></li>
+        <li><a href="/announcement">Announcements</a></li>
+        
+        <li><a href="/club">Clubs</a></li>
+        <li><a href="/about">About</a></li>          
+    </ul>
+
+    <div class="container">
+        <h1>Announcements</h1>
+        
+        <!-- Example announcement -->
+        <div class="announcement">
+            <h2>Welcome to our House</h2>
+            <p class="date">Date: September 29, 2024</p>
+            <p>Welcome to House Namdapha at IIT Madras, where innovation meets environmental stewardship. Just as Namdapha National Park is a treasure of biodiversity, our house embodies a vibrant community of thinkers and doers committed to sustainability and academic excellence. Here, we foster collaboration and creativity, encouraging each member to take initiative in making a positive impact. Together, we explore new ideas, embrace challenges, and inspire each other to be the change-makers of tomorrow. Let’s embark on this journey with a shared vision of progress and responsibility!</p>
+        </div>
+
+        <!--<div class="announcement">
+            <h2>Title of Announcement 2</h2>
+            <p class="date">Date: October 1, 2024</p>
+            <p>More details about this specific announcement will be displayed upon hover. Keep it concise and informative.</p>
+        </div> -->
+
+        <!-- 
+        <div class="announcement">
+            <h2>Title of Announcement 3</h2>
+            <p class="date">Date: October 5, 2024</p>
+            <p>Content for the third announcement. These details will show up when hovered over.</p>
+        </div>
+    </div> -->
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.menu');
+
+        hamburger.addEventListener('click', function() {
+            menu.classList.toggle('show'); // Toggle the menu visibility
+            hamburger.classList.toggle('hidden'); // Toggle the hamburger visibility
+        });
+
+        // Close menu if click occurs outside of it
+        document.addEventListener('click', function(event) {
+            if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+                menu.classList.remove('show');
+                hamburger.classList.remove('hidden'); // Show the hamburger again when clicking outside
+            }
+        });
+    </script>
+</body>
+</html>

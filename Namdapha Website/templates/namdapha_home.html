@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-image: url('static/homepic.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            height: 300vh; /* Ensure enough height for scrolling */
+            color: #fff;
+        }
+
+        /* Menu styling */
+        .menu {
+            list-style: none;
+            margin: 0;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 200px;
+            transition: transform 0.3s ease;
+            transform: translateX(-100%); /* Hidden by default */
+        }
+
+        .menu.show {
+            transform: translateX(0); /* Slide in when active */
+        }
+
+        .menu li {
+            margin: 10px 0;
+        }
+        
+        .menu a {
+            color: #fff;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .menu a:hover {
+            color: #333;
+            background-color: #ffcc00;
+            border: 2px solid #ffcc00;
+        }
+
+        /* Hamburger Button - Always visible */
+        .hamburger {
+            font-size: 30px;
+            color: #fff;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 1000; /* Ensure it stays on top */
+            display: block; /* Always visible initially */
+        }
+
+        .hamburger.hidden {
+            display: none; /* Hide when menu is open */
+        }
+
+        /* Social media footer */
+        .social-media {
+            position: fixed;
+            bottom: -150px; /* Initially hidden */
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            transition: bottom 0.5s ease; /* Smooth scroll effect */
+        }
+
+        .social-media h2 {
+            color: #FFD700; /* Gold color for Contact heading */
+            margin-bottom: 15px;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .social-media a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #ffcc00; /* Gold color for icons */
+            font-size: 36px;
+            transition: color 0.3s ease;
+        }
+
+        .social-media a:hover {
+            color: #fff; /* White color on hover */
+        }
+
+        /* Show the footer when scrolled */
+        body.scrolled .social-media {
+            bottom: 0; /* Moves the social media section up when scrolled */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hamburger Menu Icon - Always visible -->
+    <div class="hamburger">
+        <i class="fas fa-bars"></i> <!-- This is the three-line menu icon from Font Awesome -->
+    </div>
+
+    <!-- Left-aligned menu -->
+    <ul class="menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/council">House Council</a></li>
+        <li><a href="/announcement">Announcements</a></li>
+        
+        <li><a href="/club">Clubs</a></li>
+        <li><a href="/about">About</a></li>          
+    </ul>
+
+    <!-- Social Media Links -->
+    <div class="social-media">
+        <h2>Contact</h2>
+        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+
+    <script>
+        // Function to show social media when scrolling
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 200) { // Adjust this value as needed
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        });
+
+        // Toggle Menu visibility
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.menu');
+
+        hamburger.addEventListener('click', function() {
+            menu.classList.add('show');
+            hamburger.classList.add('hidden'); 
+        });
+
+        // Close menu if click occurs outside of it
+        document.addEventListener('click', function(event) {
+            if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+                menu.classList.remove('show');
+                hamburger.classList.remove('hidden'); // Show the hamburger again when clicking outside
+            }
+        });
+    </script>
+</body>
+</html>
